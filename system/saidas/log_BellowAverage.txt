@@ -1,0 +1,448 @@
+==================================================
+Algorithm: FedAvg
+Local batch size: 10
+Local steps: 1
+Local learing rate: 0.005
+Local learing rate decay: False
+Total number of clients: 58
+Clients join in each round: 1.0
+Clients randomly join: False
+Client drop rate: 0.0
+Client select regarding time: False
+Running times: 1
+Dataset: fmnist
+Number of classes: 10
+Backbone: cnn
+Using device: cuda
+Using DP: False
+Auto break: False
+Global rounds: 100
+Cuda device id: 0
+DLG attack: False
+Total number of new clients: 0
+Fine tuning epoches on new clients: 0
+==================================================
+
+============= Running time: 0th =============
+Creating server and clients ...
+FedAvgCNN(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(5, 5), stride=(1, 1))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  )
+  (conv2): Sequential(
+    (0): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=1024, out_features=512, bias=True)
+    (1): ReLU(inplace=True)
+  )
+  (fc): Linear(in_features=512, out_features=10, bias=True)
+)
+
+Join ratio / total clients: 1.0 / 58
+
+Current total users: 58
+Finished creating server and clients.
+Selected Clients: 45 clients
+Bellow Average Selection
+
+-------------Round number: 0-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3127
+Averaged Test Accurancy: 0.0564
+Averaged Test AUC: 0.4235
+Std Test Accurancy: 0.0868
+Std Test AUC: 0.1852
+------------------------- time cost ------------------------- 24.818445920944214
+Selected Clients: 35 clients
+Bellow Average Selection
+
+-------------Round number: 1-------------
+
+Evaluate global model
+Averaged Train Loss: 487.9627
+Averaged Test Accurancy: 0.0990
+Averaged Test AUC: 0.5007
+Std Test Accurancy: 0.2722
+Std Test AUC: 0.0107
+------------------------- time cost ------------------------- 18.775402069091797
+Selected Clients: 37 clients
+Bellow Average Selection
+
+-------------Round number: 2-------------
+
+Evaluate global model
+Averaged Train Loss: 41.4026
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2706
+------------------------- time cost ------------------------- 21.538355112075806
+Selected Clients: 41 clients
+Bellow Average Selection
+
+-------------Round number: 3-------------
+
+Evaluate global model
+Averaged Train Loss: 33.4870
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2706
+------------------------- time cost ------------------------- 20.971153020858765
+Selected Clients: 37 clients
+Bellow Average Selection
+
+-------------Round number: 4-------------
+
+Evaluate global model
+Averaged Train Loss: 37.6035
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2706
+------------------------- time cost ------------------------- 22.075578212738037
+Selected Clients: 41 clients
+Bellow Average Selection
+
+-------------Round number: 5-------------
+
+Evaluate global model
+Averaged Train Loss: 33.0224
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2706
+------------------------- time cost ------------------------- 21.54330039024353
+Selected Clients: 38 clients
+Bellow Average Selection
+
+-------------Round number: 6-------------
+
+Evaluate global model
+Averaged Train Loss: 38.5243
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2706
+------------------------- time cost ------------------------- 21.23966407775879
+Selected Clients: 42 clients
+Bellow Average Selection
+
+-------------Round number: 7-------------
+
+Evaluate global model
+Averaged Train Loss: 32.9932
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2706
+------------------------- time cost ------------------------- 21.950820446014404
+Selected Clients: 39 clients
+Bellow Average Selection
+
+-------------Round number: 8-------------
+
+Evaluate global model
+Averaged Train Loss: 37.6980
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5024
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2706
+------------------------- time cost ------------------------- 9.297590494155884
+Selected Clients: 42 clients
+Bellow Average Selection
+
+-------------Round number: 9-------------
+
+Evaluate global model
+Averaged Train Loss: 42.1456
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2705
+------------------------- time cost ------------------------- 8.996959447860718
+Selected Clients: 38 clients
+Bellow Average Selection
+
+-------------Round number: 10-------------
+
+Evaluate global model
+Averaged Train Loss: 1034.8008
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2726
+------------------------- time cost ------------------------- 8.793888807296753
+Selected Clients: 43 clients
+Bellow Average Selection
+
+-------------Round number: 11-------------
+
+Evaluate global model
+Averaged Train Loss: 16990.1430
+Averaged Test Accurancy: 0.0993
+Averaged Test AUC: 0.4995
+Std Test Accurancy: 0.1988
+Std Test AUC: 0.2420
+------------------------- time cost ------------------------- 9.50206446647644
+Selected Clients: 43 clients
+Bellow Average Selection
+
+-------------Round number: 12-------------
+
+Evaluate global model
+Averaged Train Loss: 954.8560
+Averaged Test Accurancy: 0.1025
+Averaged Test AUC: 0.5022
+Std Test Accurancy: 0.1855
+Std Test AUC: 0.2439
+------------------------- time cost ------------------------- 9.536800384521484
+Selected Clients: 40 clients
+Bellow Average Selection
+
+-------------Round number: 13-------------
+
+Evaluate global model
+Averaged Train Loss: 2414.0105
+Averaged Test Accurancy: 0.1025
+Averaged Test AUC: 0.5008
+Std Test Accurancy: 0.1855
+Std Test AUC: 0.2444
+------------------------- time cost ------------------------- 8.668469667434692
+Selected Clients: 38 clients
+Bellow Average Selection
+
+-------------Round number: 14-------------
+
+Evaluate global model
+Averaged Train Loss: 37539.2558
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.4838
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2083
+------------------------- time cost ------------------------- 8.732291221618652
+Selected Clients: 44 clients
+Bellow Average Selection
+
+-------------Round number: 15-------------
+
+Evaluate global model
+Averaged Train Loss: 121653.3662
+Averaged Test Accurancy: 0.1008
+Averaged Test AUC: 0.4809
+Std Test Accurancy: 0.2683
+Std Test AUC: 0.2043
+------------------------- time cost ------------------------- 9.545161247253418
+Selected Clients: 38 clients
+Bellow Average Selection
+
+-------------Round number: 16-------------
+
+Evaluate global model
+Averaged Train Loss: 458.1339
+Averaged Test Accurancy: 0.0963
+Averaged Test AUC: 0.4998
+Std Test Accurancy: 0.2031
+Std Test AUC: 0.2649
+------------------------- time cost ------------------------- 8.903494596481323
+Selected Clients: 44 clients
+Bellow Average Selection
+
+-------------Round number: 17-------------
+
+Evaluate global model
+Averaged Train Loss: 449.7021
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.4995
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2716
+------------------------- time cost ------------------------- 9.727073431015015
+Selected Clients: 41 clients
+Bellow Average Selection
+
+-------------Round number: 18-------------
+
+Evaluate global model
+Averaged Train Loss: 888.5937
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.4958
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2567
+------------------------- time cost ------------------------- 9.625523567199707
+Selected Clients: 43 clients
+Bellow Average Selection
+
+-------------Round number: 19-------------
+
+Evaluate global model
+Averaged Train Loss: 8737.0261
+Averaged Test Accurancy: 0.0963
+Averaged Test AUC: 0.4944
+Std Test Accurancy: 0.2031
+Std Test AUC: 0.2524
+------------------------- time cost ------------------------- 9.410832166671753
+Selected Clients: 39 clients
+Bellow Average Selection
+
+-------------Round number: 20-------------
+
+Evaluate global model
+Averaged Train Loss: 129.3917
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.5031
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2677
+------------------------- time cost ------------------------- 8.660934686660767
+Selected Clients: 45 clients
+Bellow Average Selection
+
+-------------Round number: 21-------------
+
+Evaluate global model
+Averaged Train Loss: 3621.7122
+Averaged Test Accurancy: 0.1009
+Averaged Test AUC: 0.4924
+Std Test Accurancy: 0.2393
+Std Test AUC: 0.2478
+------------------------- time cost ------------------------- 9.784809350967407
+Selected Clients: 36 clients
+Bellow Average Selection
+
+-------------Round number: 22-------------
+
+Evaluate global model
+Averaged Train Loss: 69.1439
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.5031
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2673
+------------------------- time cost ------------------------- 7.975755929946899
+Selected Clients: 42 clients
+Bellow Average Selection
+
+-------------Round number: 23-------------
+
+Evaluate global model
+Averaged Train Loss: 153.8354
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.5028
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2672
+------------------------- time cost ------------------------- 22.19814968109131
+Selected Clients: 40 clients
+Bellow Average Selection
+
+-------------Round number: 24-------------
+
+Evaluate global model
+Averaged Train Loss: 119.7384
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.5030
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2673
+------------------------- time cost ------------------------- 22.552698612213135
+Selected Clients: 41 clients
+Bellow Average Selection
+
+-------------Round number: 25-------------
+
+Evaluate global model
+Averaged Train Loss: 72.3265
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.5030
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2673
+------------------------- time cost ------------------------- 22.72147297859192
+Selected Clients: 39 clients
+Bellow Average Selection
+
+-------------Round number: 26-------------
+
+Evaluate global model
+Averaged Train Loss: 2398.6439
+Averaged Test Accurancy: 0.1025
+Averaged Test AUC: 0.5000
+Std Test Accurancy: 0.1855
+Std Test AUC: 0.2535
+------------------------- time cost ------------------------- 22.059145212173462
+Selected Clients: 43 clients
+Bellow Average Selection
+
+-------------Round number: 27-------------
+
+Evaluate global model
+Averaged Train Loss: 47.2547
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2766
+------------------------- time cost ------------------------- 22.68442416191101
+Selected Clients: 41 clients
+Bellow Average Selection
+
+-------------Round number: 28-------------
+
+Evaluate global model
+Averaged Train Loss: 143.4485
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.5025
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2766
+------------------------- time cost ------------------------- 23.640535354614258
+Selected Clients: 40 clients
+Bellow Average Selection
+
+-------------Round number: 29-------------
+
+Evaluate global model
+Averaged Train Loss: 73.5436
+Averaged Test Accurancy: 0.1005
+Averaged Test AUC: 0.5024
+Std Test Accurancy: 0.2150
+Std Test AUC: 0.2714
+------------------------- time cost ------------------------- 21.35263752937317
+Selected Clients: 39 clients
+Bellow Average Selection
+
+-------------Round number: 30-------------
+
+Evaluate global model
+Averaged Train Loss: 651.4148
+Averaged Test Accurancy: 0.1014
+Averaged Test AUC: 0.5024
+Std Test Accurancy: 0.2649
+Std Test AUC: 0.2784
+------------------------- time cost ------------------------- 23.149396657943726
+Traceback (most recent call last):
+  File "/home/eduardo/github/PFL-Mobilidade/system/main.py", line 518, in <module>
+    run(args)
+  File "/home/eduardo/github/PFL-Mobilidade/system/main.py", line 328, in run
+    server.train(args)
+  File "/home/eduardo/github/PFL-Mobilidade/system/flcore/servers/serveravg.py", line 169, in train
+    self.selected_clients = self.select_clients_bellow_average()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/eduardo/github/PFL-Mobilidade/system/flcore/servers/serveravg.py", line 56, in select_clients_bellow_average
+    list_of_accuracies.append(self.clients[i].test_metrics()[0])
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/eduardo/github/PFL-Mobilidade/system/flcore/clients/clientbase.py", line 142, in test_metrics
+    auc = metrics.roc_auc_score(y_true, y_prob, average='micro')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gercom/anaconda3/envs/fl/lib/python3.11/site-packages/sklearn/utils/_param_validation.py", line 211, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gercom/anaconda3/envs/fl/lib/python3.11/site-packages/sklearn/metrics/_ranking.py", line 605, in roc_auc_score
+    y_score = check_array(y_score, ensure_2d=False)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gercom/anaconda3/envs/fl/lib/python3.11/site-packages/sklearn/utils/validation.py", line 959, in check_array
+    _assert_all_finite(
+  File "/home/gercom/anaconda3/envs/fl/lib/python3.11/site-packages/sklearn/utils/validation.py", line 124, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/home/gercom/anaconda3/envs/fl/lib/python3.11/site-packages/sklearn/utils/validation.py", line 173, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.

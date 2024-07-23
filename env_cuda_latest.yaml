@@ -1,4 +1,4 @@
-name: pfllib
+name: fl
 channels:
   - pytorch
   - nvidia
@@ -12,17 +12,13 @@ dependencies:
   - h5py
   - seaborn
   - matplotlib
-  - click
   - pip:
-    - torch==2.0.1
+    - torch
     - torchaudio
     - torchtext
     - torchvision
     - calmsize
     - memory-profiler
+    - opacus
     - portalocker
     - cvxpy
-    - higher
-    - diffusers
-    - accelerate
-    - transformers

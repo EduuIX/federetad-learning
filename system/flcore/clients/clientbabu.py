@@ -1,20 +1,6 @@
-# PFLlib: Personalized Federated Learning Algorithm Library
-# Copyright (C) 2021  Jianqing Zhang
-
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
+import copy
+import torch
+import torch.nn as nn
 import numpy as np
 import time
 from flcore.clients.clientbase import Client
@@ -24,7 +10,7 @@ class clientBABU(Client):
     def __init__(self, args, id, train_samples, test_samples, **kwargs):
         super().__init__(args, id, train_samples, test_samples, **kwargs)
 
-        self.fine_tuning_epochs = args.fine_tuning_epochs
+        self.fine_tuning_steps = args.fine_tuning_steps
 
         for param in self.model.head.parameters():
             param.requires_grad = False
@@ -42,7 +28,7 @@ class clientBABU(Client):
         if self.train_slow:
             max_local_epochs = np.random.randint(1, max_local_epochs // 2)
 
-        for epoch in range(max_local_epochs):
+        for step in range(max_local_epochs):
             for i, (x, y) in enumerate(trainloader):
                 if type(x) == type([]):
                     x[0] = x[0].to(self.device)
@@ -85,7 +71,7 @@ class clientBABU(Client):
                 param.requires_grad = False
             
 
-        for epoch in range(self.fine_tuning_epochs):
+        for step in range(self.fine_tuning_steps):
             for i, (x, y) in enumerate(trainloader):
                 if type(x) == type([]):
                     x[0] = x[0].to(self.device)

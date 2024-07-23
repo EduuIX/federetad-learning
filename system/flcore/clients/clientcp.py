@@ -1,20 +1,3 @@
-# PFLlib: Personalized Federated Learning Algorithm Library
-# Copyright (C) 2021  Jianqing Zhang
-
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 import copy
 import torch
 import torch.nn as nn
@@ -31,7 +14,7 @@ class clientCP(Client):
 
         self.lamda = args.lamda
 
-        in_dim = list(args.model.head.parameters())[0].shape[1]
+        in_dim = list(args.model.base.parameters())[-1].shape[0]
         self.context = torch.rand(1, in_dim).to(self.device)
 
         self.model = Ensemble(
@@ -54,13 +37,7 @@ class clientCP(Client):
 
 
     def set_head_g(self, head):
-        headw_ps = []
-        for name, mat in self.model.model.head.named_parameters():
-            if 'weight' in name:
-                headw_ps.append(mat.data)
-        headw_p = headw_ps[-1]
-        for mat in headw_ps[-2::-1]:
-            headw_p = torch.matmul(headw_p, mat)
+        headw_p = self.model.model.head.weight.data.clone()
         headw_p.detach_()
         self.context = torch.sum(headw_p, dim=0, keepdim=True)
         
@@ -132,7 +109,7 @@ class clientCP(Client):
         if self.train_slow:
             max_local_epochs = np.random.randint(1, max_local_epochs // 2)
 
-        for epoch in range(max_local_epochs):
+        for step in range(max_local_epochs):
             self.model.gate.pm = []
             self.model.gate.gm = []
             self.pm_train = []
@@ -221,10 +198,7 @@ class Ensemble(nn.Module):
 
         if context != None:
             context = F.normalize(context, p=2, dim=1)
-            if type(x) == type([]):
-                self.context = torch.tile(context, (x[0].shape[0], 1))
-            else:
-                self.context = torch.tile(context, (x.shape[0], 1))
+            self.context = torch.tile(context, (x.shape[0], 1))
 
         if self.context != None:
             gate_in = rep * self.context

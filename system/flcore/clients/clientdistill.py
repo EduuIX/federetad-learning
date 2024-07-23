@@ -1,27 +1,10 @@
-# PFLlib: Personalized Federated Learning Algorithm Library
-# Copyright (C) 2021  Jianqing Zhang
-
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
+from collections import defaultdict
 import copy
 import torch
 import torch.nn as nn
 import numpy as np
 import time
 from flcore.clients.clientbase import Client
-from collections import defaultdict
 
 
 class clientDistill(Client):
@@ -30,6 +13,7 @@ class clientDistill(Client):
 
         self.logits = None
         self.global_logits = None
+        self.loss_mse = nn.MSELoss()
 
         self.lamda = args.lamda
 
@@ -46,7 +30,7 @@ class clientDistill(Client):
             max_local_epochs = np.random.randint(1, max_local_epochs // 2)
 
         logits = defaultdict(list)
-        for epoch in range(max_local_epochs):
+        for step in range(max_local_epochs):
             for i, (x, y) in enumerate(trainloader):
                 if type(x) == type([]):
                     x[0] = x[0].to(self.device)
@@ -64,7 +48,7 @@ class clientDistill(Client):
                         y_c = yy.item()
                         if type(self.global_logits[y_c]) != type([]):
                             logit_new[i, :] = self.global_logits[y_c].data
-                    loss += self.loss(output, logit_new.softmax(dim=1)) * self.lamda
+                    loss += self.loss_mse(logit_new, output) * self.lamda
 
                 for i, yy in enumerate(y):
                     y_c = yy.item()
@@ -112,7 +96,7 @@ class clientDistill(Client):
                         y_c = yy.item()
                         if type(self.global_logits[y_c]) != type([]):
                             logit_new[i, :] = self.global_logits[y_c].data
-                    loss += self.loss(output, logit_new.softmax(dim=1)) * self.lamda
+                    loss += self.loss_mse(logit_new, output) * self.lamda
                     
                 train_num += y.shape[0]
                 losses += loss.item() * y.shape[0]

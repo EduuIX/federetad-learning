@@ -1,23 +1,8 @@
-# PFLlib: Personalized Federated Learning Algorithm Library
-# Copyright (C) 2021  Jianqing Zhang
-
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 import torch
+import torch.nn as nn
 import numpy as np
 import time
+import copy
 from flcore.clients.clientbase import Client
 from flcore.optimizers.fedoptimizer import SCAFFOLDOptimizer
 
@@ -49,7 +34,7 @@ class clientSCAFFOLD(Client):
         if self.train_slow:
             max_local_epochs = np.random.randint(1, max_local_epochs // 2)
 
-        for epoch in range(max_local_epochs):
+        for step in range(max_local_epochs):
             for i, (x, y) in enumerate(trainloader):
                 if type(x) == type([]):
                     x[0] = x[0].to(self.device)
@@ -66,8 +51,8 @@ class clientSCAFFOLD(Client):
 
         # self.model.cpu()
         self.num_batches = len(trainloader)
-        self.update_yc(max_local_epochs)
-        # self.delta_c, self.delta_y = self.delta_yc(max_local_epochs)
+        self.update_yc()
+        # self.delta_c, self.delta_y = self.delta_yc()
 
         if self.learning_rate_decay:
             self.learning_rate_scheduler.step()
@@ -83,16 +68,16 @@ class clientSCAFFOLD(Client):
         self.global_c = global_c
         self.global_model = model
 
-    def update_yc(self, max_local_epochs):
+    def update_yc(self):
         for ci, c, x, yi in zip(self.client_c, self.global_c, self.global_model.parameters(), self.model.parameters()):
-            ci.data = ci - c + 1/self.num_batches/max_local_epochs/self.learning_rate * (x - yi)
+            ci.data = ci - c + 1/self.num_batches/self.learning_rate * (x - yi)
 
-    def delta_yc(self, max_local_epochs):
+    def delta_yc(self):
         delta_y = []
         delta_c = []
         for c, x, yi in zip(self.global_c, self.global_model.parameters(), self.model.parameters()):
             delta_y.append(yi - x)
-            delta_c.append(- c + 1/self.num_batches/max_local_epochs/self.learning_rate * (x - yi))
+            delta_c.append(- c + 1/self.num_batches/self.learning_rate * (x - yi))
 
         return delta_y, delta_c
 

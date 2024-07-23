@@ -1,21 +1,5 @@
-# PFLlib: Personalized Federated Learning Algorithm Library
-# Copyright (C) 2021  Jianqing Zhang
-
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 import torch
+import torch.nn as nn
 import numpy as np
 import time
 from flcore.clients.clientbase import Client
@@ -36,7 +20,7 @@ class clientRep(Client):
             gamma=args.learning_rate_decay_gamma
         )
 
-        self.plocal_epochs = args.plocal_epochs
+        self.plocal_steps = args.plocal_steps
 
     def train(self):
         trainloader = self.load_train_data()
@@ -51,7 +35,7 @@ class clientRep(Client):
         for param in self.model.head.parameters():
             param.requires_grad = True
 
-        for epoch in range(self.plocal_epochs):
+        for step in range(self.plocal_steps):
             for i, (x, y) in enumerate(trainloader):
                 if type(x) == type([]):
                     x[0] = x[0].to(self.device)
@@ -75,7 +59,7 @@ class clientRep(Client):
         for param in self.model.head.parameters():
             param.requires_grad = False
 
-        for epoch in range(max_local_epochs):
+        for step in range(max_local_epochs):
             for i, (x, y) in enumerate(trainloader):
                 if type(x) == type([]):
                     x[0] = x[0].to(self.device)

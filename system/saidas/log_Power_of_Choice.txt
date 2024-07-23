@@ -1,0 +1,1281 @@
+==================================================
+Algorithm: FedAvg
+Local batch size: 10
+Local steps: 1
+Local learing rate: 0.005
+Local learing rate decay: False
+Total number of clients: 58
+Clients join in each round: 1.0
+Clients randomly join: False
+Client drop rate: 0.0
+Client select regarding time: False
+Running times: 1
+Dataset: fmnist
+Number of classes: 10
+Backbone: cnn
+Using device: cuda
+Using DP: False
+Auto break: False
+Global rounds: 100
+Cuda device id: 0
+DLG attack: False
+Total number of new clients: 0
+Fine tuning epoches on new clients: 0
+==================================================
+
+============= Running time: 0th =============
+Creating server and clients ...
+FedAvgCNN(
+  (conv1): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(5, 5), stride=(1, 1))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  )
+  (conv2): Sequential(
+    (0): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  )
+  (fc1): Sequential(
+    (0): Linear(in_features=1024, out_features=512, bias=True)
+    (1): ReLU(inplace=True)
+  )
+  (fc): Linear(in_features=512, out_features=10, bias=True)
+)
+
+Join ratio / total clients: 1.0 / 58
+
+Current total users: 58
+Finished creating server and clients.
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 0-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3127
+Averaged Test Accurancy: 0.0564
+Averaged Test AUC: 0.4235
+Std Test Accurancy: 0.0868
+Std Test AUC: 0.1852
+------------------------- time cost ------------------------- 16.46857523918152
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 1-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3170
+Averaged Test Accurancy: 0.1184
+Averaged Test AUC: 0.5382
+Std Test Accurancy: 0.2159
+Std Test AUC: 0.2339
+------------------------- time cost ------------------------- 15.744389772415161
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 2-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3778
+Averaged Test Accurancy: 0.1647
+Averaged Test AUC: 0.5792
+Std Test Accurancy: 0.2401
+Std Test AUC: 0.2316
+------------------------- time cost ------------------------- 16.39388608932495
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 3-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3005
+Averaged Test Accurancy: 0.3109
+Averaged Test AUC: 0.6506
+Std Test Accurancy: 0.2980
+Std Test AUC: 0.2621
+------------------------- time cost ------------------------- 16.973036289215088
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 4-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3944
+Averaged Test Accurancy: 0.3597
+Averaged Test AUC: 0.6665
+Std Test Accurancy: 0.3394
+Std Test AUC: 0.2791
+------------------------- time cost ------------------------- 17.286907196044922
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 5-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4563
+Averaged Test Accurancy: 0.3990
+Averaged Test AUC: 0.6850
+Std Test Accurancy: 0.3349
+Std Test AUC: 0.2912
+------------------------- time cost ------------------------- 16.693446159362793
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 6-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4665
+Averaged Test Accurancy: 0.4107
+Averaged Test AUC: 0.7000
+Std Test Accurancy: 0.3303
+Std Test AUC: 0.2904
+------------------------- time cost ------------------------- 17.53382110595703
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 7-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5161
+Averaged Test Accurancy: 0.4637
+Averaged Test AUC: 0.7134
+Std Test Accurancy: 0.3338
+Std Test AUC: 0.2865
+------------------------- time cost ------------------------- 17.20666813850403
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 8-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4669
+Averaged Test Accurancy: 0.4817
+Averaged Test AUC: 0.7266
+Std Test Accurancy: 0.3260
+Std Test AUC: 0.2766
+------------------------- time cost ------------------------- 16.441599369049072
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 9-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5284
+Averaged Test Accurancy: 0.4801
+Averaged Test AUC: 0.7324
+Std Test Accurancy: 0.3399
+Std Test AUC: 0.2731
+------------------------- time cost ------------------------- 17.09357714653015
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 10-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6234
+Averaged Test Accurancy: 0.4842
+Averaged Test AUC: 0.7362
+Std Test Accurancy: 0.3487
+Std Test AUC: 0.2676
+------------------------- time cost ------------------------- 17.456461906433105
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 11-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6197
+Averaged Test Accurancy: 0.4927
+Averaged Test AUC: 0.7420
+Std Test Accurancy: 0.3464
+Std Test AUC: 0.2652
+------------------------- time cost ------------------------- 17.96632146835327
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 12-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6571
+Averaged Test Accurancy: 0.4938
+Averaged Test AUC: 0.7523
+Std Test Accurancy: 0.3475
+Std Test AUC: 0.2584
+------------------------- time cost ------------------------- 17.361504793167114
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 13-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6169
+Averaged Test Accurancy: 0.4990
+Averaged Test AUC: 0.7614
+Std Test Accurancy: 0.3469
+Std Test AUC: 0.2541
+------------------------- time cost ------------------------- 17.602421045303345
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 14-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6520
+Averaged Test Accurancy: 0.5010
+Averaged Test AUC: 0.7688
+Std Test Accurancy: 0.3475
+Std Test AUC: 0.2502
+------------------------- time cost ------------------------- 17.22419261932373
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 15-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6767
+Averaged Test Accurancy: 0.5063
+Averaged Test AUC: 0.7741
+Std Test Accurancy: 0.3473
+Std Test AUC: 0.2465
+------------------------- time cost ------------------------- 16.851664066314697
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 16-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6638
+Averaged Test Accurancy: 0.5135
+Averaged Test AUC: 0.7799
+Std Test Accurancy: 0.3463
+Std Test AUC: 0.2446
+------------------------- time cost ------------------------- 17.198965311050415
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 17-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6788
+Averaged Test Accurancy: 0.5125
+Averaged Test AUC: 0.7870
+Std Test Accurancy: 0.3468
+Std Test AUC: 0.2368
+------------------------- time cost ------------------------- 17.59643292427063
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 18-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6790
+Averaged Test Accurancy: 0.5137
+Averaged Test AUC: 0.7915
+Std Test Accurancy: 0.3472
+Std Test AUC: 0.2343
+------------------------- time cost ------------------------- 17.415894269943237
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 19-------------
+
+Evaluate global model
+Averaged Train Loss: 2.7013
+Averaged Test Accurancy: 0.5122
+Averaged Test AUC: 0.7955
+Std Test Accurancy: 0.3459
+Std Test AUC: 0.2333
+------------------------- time cost ------------------------- 17.45948839187622
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 20-------------
+
+Evaluate global model
+Averaged Train Loss: 2.7055
+Averaged Test Accurancy: 0.5117
+Averaged Test AUC: 0.7986
+Std Test Accurancy: 0.3467
+Std Test AUC: 0.2305
+------------------------- time cost ------------------------- 17.409640312194824
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 21-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6864
+Averaged Test Accurancy: 0.5161
+Averaged Test AUC: 0.8014
+Std Test Accurancy: 0.3471
+Std Test AUC: 0.2282
+------------------------- time cost ------------------------- 17.409651041030884
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 22-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6719
+Averaged Test Accurancy: 0.5241
+Averaged Test AUC: 0.8057
+Std Test Accurancy: 0.3473
+Std Test AUC: 0.2253
+------------------------- time cost ------------------------- 17.107459783554077
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 23-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6626
+Averaged Test Accurancy: 0.5183
+Averaged Test AUC: 0.8091
+Std Test Accurancy: 0.3483
+Std Test AUC: 0.2185
+------------------------- time cost ------------------------- 17.270793676376343
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 24-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6103
+Averaged Test Accurancy: 0.5336
+Averaged Test AUC: 0.8159
+Std Test Accurancy: 0.3489
+Std Test AUC: 0.2139
+------------------------- time cost ------------------------- 17.344345808029175
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 25-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6170
+Averaged Test Accurancy: 0.5254
+Averaged Test AUC: 0.8163
+Std Test Accurancy: 0.3469
+Std Test AUC: 0.2124
+------------------------- time cost ------------------------- 17.040318250656128
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 26-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6312
+Averaged Test Accurancy: 0.5305
+Averaged Test AUC: 0.8174
+Std Test Accurancy: 0.3477
+Std Test AUC: 0.2127
+------------------------- time cost ------------------------- 17.495479822158813
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 27-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6417
+Averaged Test Accurancy: 0.5254
+Averaged Test AUC: 0.8178
+Std Test Accurancy: 0.3470
+Std Test AUC: 0.2117
+------------------------- time cost ------------------------- 17.63180899620056
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 28-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6187
+Averaged Test Accurancy: 0.5350
+Averaged Test AUC: 0.8231
+Std Test Accurancy: 0.3484
+Std Test AUC: 0.2058
+------------------------- time cost ------------------------- 17.978410482406616
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 29-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6031
+Averaged Test Accurancy: 0.5320
+Averaged Test AUC: 0.8240
+Std Test Accurancy: 0.3481
+Std Test AUC: 0.2046
+------------------------- time cost ------------------------- 17.197071075439453
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 30-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5908
+Averaged Test Accurancy: 0.5349
+Averaged Test AUC: 0.8257
+Std Test Accurancy: 0.3483
+Std Test AUC: 0.2035
+------------------------- time cost ------------------------- 17.57871389389038
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 31-------------
+
+Evaluate global model
+Averaged Train Loss: 2.6178
+Averaged Test Accurancy: 0.5301
+Averaged Test AUC: 0.8261
+Std Test Accurancy: 0.3507
+Std Test AUC: 0.2028
+------------------------- time cost ------------------------- 14.197259664535522
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 32-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5870
+Averaged Test Accurancy: 0.5343
+Averaged Test AUC: 0.8300
+Std Test Accurancy: 0.3481
+Std Test AUC: 0.1982
+------------------------- time cost ------------------------- 6.623507976531982
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 33-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5729
+Averaged Test Accurancy: 0.5386
+Averaged Test AUC: 0.8312
+Std Test Accurancy: 0.3486
+Std Test AUC: 0.1983
+------------------------- time cost ------------------------- 6.928227186203003
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 34-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5923
+Averaged Test Accurancy: 0.5417
+Averaged Test AUC: 0.8328
+Std Test Accurancy: 0.3499
+Std Test AUC: 0.1970
+------------------------- time cost ------------------------- 7.065694570541382
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 35-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5557
+Averaged Test Accurancy: 0.5403
+Averaged Test AUC: 0.8335
+Std Test Accurancy: 0.3502
+Std Test AUC: 0.1958
+------------------------- time cost ------------------------- 6.919259071350098
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 36-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5728
+Averaged Test Accurancy: 0.5426
+Averaged Test AUC: 0.8349
+Std Test Accurancy: 0.3528
+Std Test AUC: 0.1947
+------------------------- time cost ------------------------- 6.799206256866455
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 37-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5659
+Averaged Test Accurancy: 0.5431
+Averaged Test AUC: 0.8360
+Std Test Accurancy: 0.3516
+Std Test AUC: 0.1932
+------------------------- time cost ------------------------- 6.8685948848724365
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 38-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5764
+Averaged Test Accurancy: 0.5459
+Averaged Test AUC: 0.8375
+Std Test Accurancy: 0.3521
+Std Test AUC: 0.1925
+------------------------- time cost ------------------------- 6.8368659019470215
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 39-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5788
+Averaged Test Accurancy: 0.5452
+Averaged Test AUC: 0.8392
+Std Test Accurancy: 0.3516
+Std Test AUC: 0.1904
+------------------------- time cost ------------------------- 6.895948171615601
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 40-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5181
+Averaged Test Accurancy: 0.5577
+Averaged Test AUC: 0.8419
+Std Test Accurancy: 0.3470
+Std Test AUC: 0.1888
+------------------------- time cost ------------------------- 7.010260105133057
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 41-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5248
+Averaged Test Accurancy: 0.5514
+Averaged Test AUC: 0.8424
+Std Test Accurancy: 0.3494
+Std Test AUC: 0.1873
+------------------------- time cost ------------------------- 7.077798843383789
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 42-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5279
+Averaged Test Accurancy: 0.5550
+Averaged Test AUC: 0.8441
+Std Test Accurancy: 0.3481
+Std Test AUC: 0.1859
+------------------------- time cost ------------------------- 6.836036682128906
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 43-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5158
+Averaged Test Accurancy: 0.5556
+Averaged Test AUC: 0.8452
+Std Test Accurancy: 0.3479
+Std Test AUC: 0.1839
+------------------------- time cost ------------------------- 6.829470157623291
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 44-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5305
+Averaged Test Accurancy: 0.5519
+Averaged Test AUC: 0.8466
+Std Test Accurancy: 0.3500
+Std Test AUC: 0.1824
+------------------------- time cost ------------------------- 6.87260103225708
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 45-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5288
+Averaged Test Accurancy: 0.5561
+Averaged Test AUC: 0.8482
+Std Test Accurancy: 0.3496
+Std Test AUC: 0.1811
+------------------------- time cost ------------------------- 6.861177206039429
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 46-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5284
+Averaged Test Accurancy: 0.5561
+Averaged Test AUC: 0.8498
+Std Test Accurancy: 0.3483
+Std Test AUC: 0.1789
+------------------------- time cost ------------------------- 6.605820655822754
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 47-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4842
+Averaged Test Accurancy: 0.5596
+Averaged Test AUC: 0.8503
+Std Test Accurancy: 0.3497
+Std Test AUC: 0.1787
+------------------------- time cost ------------------------- 6.646309852600098
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 48-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5169
+Averaged Test Accurancy: 0.5580
+Averaged Test AUC: 0.8525
+Std Test Accurancy: 0.3493
+Std Test AUC: 0.1764
+------------------------- time cost ------------------------- 6.818119287490845
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 49-------------
+
+Evaluate global model
+Averaged Train Loss: 2.5299
+Averaged Test Accurancy: 0.5549
+Averaged Test AUC: 0.8533
+Std Test Accurancy: 0.3512
+Std Test AUC: 0.1753
+------------------------- time cost ------------------------- 6.876921892166138
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 50-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4978
+Averaged Test Accurancy: 0.5588
+Averaged Test AUC: 0.8544
+Std Test Accurancy: 0.3511
+Std Test AUC: 0.1741
+------------------------- time cost ------------------------- 10.429726362228394
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 51-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4749
+Averaged Test Accurancy: 0.5649
+Averaged Test AUC: 0.8552
+Std Test Accurancy: 0.3500
+Std Test AUC: 0.1746
+------------------------- time cost ------------------------- 17.499326705932617
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 52-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4618
+Averaged Test Accurancy: 0.5696
+Averaged Test AUC: 0.8577
+Std Test Accurancy: 0.3437
+Std Test AUC: 0.1728
+------------------------- time cost ------------------------- 17.458803415298462
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 53-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4245
+Averaged Test Accurancy: 0.5658
+Averaged Test AUC: 0.8584
+Std Test Accurancy: 0.3491
+Std Test AUC: 0.1721
+------------------------- time cost ------------------------- 17.11204719543457
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 54-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4580
+Averaged Test Accurancy: 0.5629
+Averaged Test AUC: 0.8605
+Std Test Accurancy: 0.3481
+Std Test AUC: 0.1689
+------------------------- time cost ------------------------- 17.254403829574585
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 55-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4467
+Averaged Test Accurancy: 0.5627
+Averaged Test AUC: 0.8610
+Std Test Accurancy: 0.3497
+Std Test AUC: 0.1680
+------------------------- time cost ------------------------- 17.78799057006836
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 56-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4006
+Averaged Test Accurancy: 0.5716
+Averaged Test AUC: 0.8625
+Std Test Accurancy: 0.3451
+Std Test AUC: 0.1673
+------------------------- time cost ------------------------- 17.44534134864807
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 57-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3963
+Averaged Test Accurancy: 0.5747
+Averaged Test AUC: 0.8641
+Std Test Accurancy: 0.3441
+Std Test AUC: 0.1659
+------------------------- time cost ------------------------- 18.309712886810303
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 58-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3885
+Averaged Test Accurancy: 0.5735
+Averaged Test AUC: 0.8642
+Std Test Accurancy: 0.3455
+Std Test AUC: 0.1657
+------------------------- time cost ------------------------- 17.996233224868774
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 59-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3761
+Averaged Test Accurancy: 0.5753
+Averaged Test AUC: 0.8647
+Std Test Accurancy: 0.3457
+Std Test AUC: 0.1654
+------------------------- time cost ------------------------- 17.317877531051636
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 60-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3905
+Averaged Test Accurancy: 0.5773
+Averaged Test AUC: 0.8662
+Std Test Accurancy: 0.3449
+Std Test AUC: 0.1634
+------------------------- time cost ------------------------- 17.268733263015747
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 61-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3684
+Averaged Test Accurancy: 0.5764
+Averaged Test AUC: 0.8662
+Std Test Accurancy: 0.3472
+Std Test AUC: 0.1635
+------------------------- time cost ------------------------- 17.666527032852173
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 62-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3815
+Averaged Test Accurancy: 0.5763
+Averaged Test AUC: 0.8678
+Std Test Accurancy: 0.3473
+Std Test AUC: 0.1622
+------------------------- time cost ------------------------- 17.536130905151367
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 63-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3874
+Averaged Test Accurancy: 0.5767
+Averaged Test AUC: 0.8672
+Std Test Accurancy: 0.3475
+Std Test AUC: 0.1628
+------------------------- time cost ------------------------- 17.468183279037476
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 64-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4003
+Averaged Test Accurancy: 0.5700
+Averaged Test AUC: 0.8685
+Std Test Accurancy: 0.3501
+Std Test AUC: 0.1612
+------------------------- time cost ------------------------- 17.9707088470459
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 65-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3886
+Averaged Test Accurancy: 0.5759
+Averaged Test AUC: 0.8700
+Std Test Accurancy: 0.3477
+Std Test AUC: 0.1599
+------------------------- time cost ------------------------- 17.39425253868103
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 66-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3526
+Averaged Test Accurancy: 0.5806
+Averaged Test AUC: 0.8691
+Std Test Accurancy: 0.3467
+Std Test AUC: 0.1614
+------------------------- time cost ------------------------- 17.810587644577026
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 67-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3683
+Averaged Test Accurancy: 0.5783
+Averaged Test AUC: 0.8698
+Std Test Accurancy: 0.3464
+Std Test AUC: 0.1605
+------------------------- time cost ------------------------- 17.6387939453125
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 68-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3764
+Averaged Test Accurancy: 0.5793
+Averaged Test AUC: 0.8709
+Std Test Accurancy: 0.3456
+Std Test AUC: 0.1599
+------------------------- time cost ------------------------- 16.94507145881653
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 69-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3391
+Averaged Test Accurancy: 0.5810
+Averaged Test AUC: 0.8695
+Std Test Accurancy: 0.3481
+Std Test AUC: 0.1605
+------------------------- time cost ------------------------- 17.165608644485474
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 70-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3628
+Averaged Test Accurancy: 0.5834
+Averaged Test AUC: 0.8724
+Std Test Accurancy: 0.3463
+Std Test AUC: 0.1587
+------------------------- time cost ------------------------- 17.618865966796875
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 71-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3346
+Averaged Test Accurancy: 0.5837
+Averaged Test AUC: 0.8717
+Std Test Accurancy: 0.3475
+Std Test AUC: 0.1592
+------------------------- time cost ------------------------- 17.030877828598022
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 72-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3969
+Averaged Test Accurancy: 0.5740
+Averaged Test AUC: 0.8709
+Std Test Accurancy: 0.3519
+Std Test AUC: 0.1592
+------------------------- time cost ------------------------- 17.916658878326416
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 73-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3613
+Averaged Test Accurancy: 0.5841
+Averaged Test AUC: 0.8719
+Std Test Accurancy: 0.3488
+Std Test AUC: 0.1594
+------------------------- time cost ------------------------- 17.87571120262146
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 74-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3805
+Averaged Test Accurancy: 0.5785
+Averaged Test AUC: 0.8731
+Std Test Accurancy: 0.3496
+Std Test AUC: 0.1577
+------------------------- time cost ------------------------- 17.467132568359375
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 75-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3424
+Averaged Test Accurancy: 0.5876
+Averaged Test AUC: 0.8729
+Std Test Accurancy: 0.3461
+Std Test AUC: 0.1584
+------------------------- time cost ------------------------- 17.52996826171875
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 76-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3551
+Averaged Test Accurancy: 0.5854
+Averaged Test AUC: 0.8722
+Std Test Accurancy: 0.3472
+Std Test AUC: 0.1588
+------------------------- time cost ------------------------- 17.615543127059937
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 77-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3443
+Averaged Test Accurancy: 0.5856
+Averaged Test AUC: 0.8727
+Std Test Accurancy: 0.3483
+Std Test AUC: 0.1587
+------------------------- time cost ------------------------- 17.420457124710083
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 78-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3414
+Averaged Test Accurancy: 0.5891
+Averaged Test AUC: 0.8744
+Std Test Accurancy: 0.3480
+Std Test AUC: 0.1575
+------------------------- time cost ------------------------- 17.79889988899231
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 79-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3443
+Averaged Test Accurancy: 0.5837
+Averaged Test AUC: 0.8738
+Std Test Accurancy: 0.3490
+Std Test AUC: 0.1580
+------------------------- time cost ------------------------- 18.042224168777466
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 80-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3531
+Averaged Test Accurancy: 0.5856
+Averaged Test AUC: 0.8743
+Std Test Accurancy: 0.3467
+Std Test AUC: 0.1571
+------------------------- time cost ------------------------- 17.941978454589844
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 81-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3438
+Averaged Test Accurancy: 0.5859
+Averaged Test AUC: 0.8751
+Std Test Accurancy: 0.3478
+Std Test AUC: 0.1567
+------------------------- time cost ------------------------- 17.349750518798828
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 82-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3343
+Averaged Test Accurancy: 0.5901
+Averaged Test AUC: 0.8753
+Std Test Accurancy: 0.3479
+Std Test AUC: 0.1564
+------------------------- time cost ------------------------- 17.352028369903564
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 83-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3570
+Averaged Test Accurancy: 0.5917
+Averaged Test AUC: 0.8760
+Std Test Accurancy: 0.3467
+Std Test AUC: 0.1555
+------------------------- time cost ------------------------- 17.42719554901123
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 84-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3370
+Averaged Test Accurancy: 0.5915
+Averaged Test AUC: 0.8740
+Std Test Accurancy: 0.3460
+Std Test AUC: 0.1573
+------------------------- time cost ------------------------- 17.478270769119263
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 85-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3536
+Averaged Test Accurancy: 0.5937
+Averaged Test AUC: 0.8746
+Std Test Accurancy: 0.3452
+Std Test AUC: 0.1577
+------------------------- time cost ------------------------- 17.88597345352173
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 86-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3801
+Averaged Test Accurancy: 0.5888
+Averaged Test AUC: 0.8743
+Std Test Accurancy: 0.3486
+Std Test AUC: 0.1578
+------------------------- time cost ------------------------- 17.73976445198059
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 87-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3658
+Averaged Test Accurancy: 0.5946
+Averaged Test AUC: 0.8747
+Std Test Accurancy: 0.3460
+Std Test AUC: 0.1578
+------------------------- time cost ------------------------- 17.71928358078003
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 88-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3886
+Averaged Test Accurancy: 0.5933
+Averaged Test AUC: 0.8742
+Std Test Accurancy: 0.3466
+Std Test AUC: 0.1580
+------------------------- time cost ------------------------- 17.492072343826294
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 89-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3976
+Averaged Test Accurancy: 0.5960
+Averaged Test AUC: 0.8749
+Std Test Accurancy: 0.3453
+Std Test AUC: 0.1573
+------------------------- time cost ------------------------- 17.852020502090454
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 90-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4058
+Averaged Test Accurancy: 0.5952
+Averaged Test AUC: 0.8749
+Std Test Accurancy: 0.3472
+Std Test AUC: 0.1573
+------------------------- time cost ------------------------- 17.400949239730835
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 91-------------
+
+Evaluate global model
+Averaged Train Loss: 2.3797
+Averaged Test Accurancy: 0.5984
+Averaged Test AUC: 0.8741
+Std Test Accurancy: 0.3462
+Std Test AUC: 0.1578
+------------------------- time cost ------------------------- 17.929202556610107
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 92-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4294
+Averaged Test Accurancy: 0.5950
+Averaged Test AUC: 0.8744
+Std Test Accurancy: 0.3468
+Std Test AUC: 0.1575
+------------------------- time cost ------------------------- 7.3419294357299805
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 93-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4191
+Averaged Test Accurancy: 0.5966
+Averaged Test AUC: 0.8746
+Std Test Accurancy: 0.3471
+Std Test AUC: 0.1573
+------------------------- time cost ------------------------- 6.850157260894775
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 94-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4040
+Averaged Test Accurancy: 0.5998
+Averaged Test AUC: 0.8744
+Std Test Accurancy: 0.3456
+Std Test AUC: 0.1577
+------------------------- time cost ------------------------- 7.079124212265015
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 95-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4238
+Averaged Test Accurancy: 0.5913
+Averaged Test AUC: 0.8733
+Std Test Accurancy: 0.3489
+Std Test AUC: 0.1576
+------------------------- time cost ------------------------- 7.107713222503662
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 96-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4113
+Averaged Test Accurancy: 0.5992
+Averaged Test AUC: 0.8743
+Std Test Accurancy: 0.3458
+Std Test AUC: 0.1576
+------------------------- time cost ------------------------- 6.934680700302124
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 97-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4099
+Averaged Test Accurancy: 0.5975
+Averaged Test AUC: 0.8732
+Std Test Accurancy: 0.3473
+Std Test AUC: 0.1582
+------------------------- time cost ------------------------- 6.8872644901275635
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 98-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4449
+Averaged Test Accurancy: 0.5985
+Averaged Test AUC: 0.8740
+Std Test Accurancy: 0.3475
+Std Test AUC: 0.1580
+------------------------- time cost ------------------------- 7.104194164276123
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 99-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4320
+Averaged Test Accurancy: 0.5988
+Averaged Test AUC: 0.8737
+Std Test Accurancy: 0.3461
+Std Test AUC: 0.1584
+------------------------- time cost ------------------------- 6.699103355407715
+Selected Clients: 20 clients
+Power of Choice Selection
+
+-------------Round number: 100-------------
+
+Evaluate global model
+Averaged Train Loss: 2.4315
+Averaged Test Accurancy: 0.6046
+Averaged Test AUC: 0.8740
+Std Test Accurancy: 0.3447
+Std Test AUC: 0.1585
+------------------------- time cost ------------------------- 6.94635534286499
+
+Best accuracy.
+0.6045804155665251
+
+Average time cost per round.
+14.488448622226715
+File path: ../results/fmnist_FedAvg_test_0.h5
+
+Average time cost: 1754.16s.
+Length:  101
+std for best accurancy: 0.0
+mean for best accurancy: 0.6045804155665251
+All done!
+
+Storage on cuda:0
+-------------------------------------------------------------------------------
+Total Tensors: 79155536 	Used Memory: 217.72M
+The allocated memory on cuda:0: 233.97M
+Memory differs due to the matrix alignment or invisible gradient buffer tensors
+-------------------------------------------------------------------------------

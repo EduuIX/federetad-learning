@@ -1,20 +1,3 @@
-# PFLlib: Personalized Federated Learning Algorithm Library
-# Copyright (C) 2021  Jianqing Zhang
-
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 import copy
 import time
 import torch
@@ -32,18 +15,18 @@ class clientGPFL(Client):
         self.feature_dim = list(self.model.head.parameters())[0].shape[1]
 
         self.lamda = args.lamda
-        self.mu = args.mu
+        self.lamda_reg = args.lamda_reg
 
         self.GCE = copy.deepcopy(args.GCE)
         self.GCE_opt = torch.optim.SGD(self.GCE.parameters(),
                                        lr=self.learning_rate,
-                                       weight_decay=self.mu)
+                                       weight_decay=self.lamda_reg)
         self.GCE_frozen = copy.deepcopy(self.GCE)
 
         self.CoV = copy.deepcopy(args.CoV)
         self.CoV_opt = torch.optim.SGD(self.CoV.parameters(),
                                          lr=self.learning_rate,
-                                         weight_decay=self.mu)
+                                         weight_decay=self.lamda_reg)
 
         self.generic_conditional_input = torch.zeros(self.feature_dim).to(self.device)
         self.personalized_conditional_input = torch.zeros(self.feature_dim).to(self.device)
@@ -68,7 +51,7 @@ class clientGPFL(Client):
         if self.train_slow:
             max_local_epochs = np.random.randint(1, max_local_epochs // 2)
 
-        for epoch in range(max_local_epochs):
+        for step in range(max_local_epochs):
             for i, (x, y) in enumerate(trainloader):
                 if type(x) == type([]):
                     x[0] = x[0].to(self.device)
