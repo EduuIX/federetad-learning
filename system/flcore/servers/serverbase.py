@@ -136,9 +136,7 @@ class Server(object):
         # self.new_clients = [client for client in self.new_clients if client not in self.client_drop]
         
         print('')
-        print([client.id for client in self.client_drop])
-        print([client.id for client in self.new_clients])
-        for client_drop in self.client_drop:
+        for client_drop in self.client_drop[:]:
             substitute_client = min(self.new_clients, 
                                     key=lambda new_clients: \
                                         abs(new_clients.train_samples - client_drop.train_samples))
@@ -148,8 +146,6 @@ class Server(object):
             self.client_drop.remove(client_drop)
             substitutes_clients.append(substitute_client)
             self.new_clients.remove(substitute_client)
-        print([client.id for client in self.client_drop])
-        print([client.id for client in self.new_clients])
         print('')
 
         return substitutes_clients
