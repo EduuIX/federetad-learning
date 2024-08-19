@@ -138,13 +138,13 @@ class Server(object):
         substitutes_clients = []
 
         for client_drop in self.client_drop:
-            substitute_client = min(self.client_not_selected, 
-                                    key=lambda client_not_selected: \
-                                        abs(client_not_selected.train_samples - client_drop.train_samples))
+            substitute_client = min(self.new_clients, 
+                                    key=lambda new_clients: \
+                                        abs(new_clients.train_samples - client_drop.train_samples))
             
             print(f'Sai: {client_drop.id} =============> Entra: {substitute_client.id}')
             substitutes_clients.append(substitute_client)
-            self.client_not_selected.remove(substitute_client) 
+            self.new_clients.remove(substitute_client) 
 
         return substitutes_clients
 
@@ -166,7 +166,7 @@ class Server(object):
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
         print(f'Active_clients: {len([client.id for client in active_clients])}')
         print(f'Client_drop: {len([client.id for client in self.client_drop])}')
-        print(f'Client_not_selected: {len([client.id for client in self.client_not_selected])}')
+        print(f'Client_not_selected: {len([client.id for client in self.new_clients])}')
 
         if len(self.client_drop) > 0:
             substitutes = self.replace_clients()
@@ -177,7 +177,7 @@ class Server(object):
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
         print(f'Active_clients: {len([client.id for client in active_clients])}')
         print(f'Client_drop: {len([client.id for client in self.client_drop])}')
-        print(f'Client_not_selected: {len([client.id for client in self.client_not_selected])}')
+        print(f'Client_not_selected: {len([client.id for client in self.new_clients])}')
 
         self.uploaded_ids = []
         self.uploaded_weights = []
