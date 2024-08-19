@@ -133,6 +133,8 @@ class Server(object):
     def replace_clients(self):
         substitutes_clients = []
 
+        self.new_clients = [client for client in self.new_clients if client not in self.client_drop]
+        
         print('')
         for client_drop in self.client_drop:
             substitute_client = min(self.new_clients, 
