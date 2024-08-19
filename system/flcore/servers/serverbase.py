@@ -138,7 +138,7 @@ class Server(object):
                                     key=lambda new_clients: \
                                         abs(new_clients.train_samples - client_drop.train_samples))
             
-            print(f'Sai: {client_drop.id} =============> Entra: {substitute_client.id}')
+            print(f'Sai: {client_drop.id}\t =============> Entra:\t {substitute_client.id}')
             substitutes_clients.append(substitute_client)
             self.new_clients.remove(substitute_client)
             self.new_clients.append(client_drop)
@@ -157,8 +157,7 @@ class Server(object):
 
         self.client_drop = [client for client in self.selected_clients if client not in active_clients]
         
-        print('=============')
-        print(f'Clients: {len([client.id for client in self.clients])}')
+        print('===========================================================================')
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
         print(f'Active_clients: {len([client.id for client in active_clients])}')
         print(f'Client_drop: {len([client.id for client in self.client_drop])}')
@@ -168,8 +167,7 @@ class Server(object):
             substitutes = self.replace_clients()
             active_clients.extend(substitutes)
 
-        print('=============')
-        print(f'Clients: {len([client.id for client in self.clients])}')
+        print('===========================================================================')
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
         print(f'Active_clients: {len([client.id for client in active_clients])}')
         print(f'Client_drop: {len([client.id for client in self.client_drop])}')
