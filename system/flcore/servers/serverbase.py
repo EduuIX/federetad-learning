@@ -137,6 +137,7 @@ class Server(object):
         
         print('')
         print(len(self.client_drop))
+        print(len(self.new_clients))
         for client_drop in self.client_drop:
             substitute_client = min(self.new_clients, 
                                     key=lambda new_clients: \
@@ -147,6 +148,8 @@ class Server(object):
             self.client_drop.remove(client_drop)
             substitutes_clients.append(substitute_client)
             self.new_clients.remove(substitute_client)
+        print(len(self.client_drop))
+        print(len(self.new_clients))
         print('')
 
         return substitutes_clients
