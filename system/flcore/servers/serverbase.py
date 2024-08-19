@@ -70,10 +70,6 @@ class Server(object):
         self.fine_tuning_epoch = args.fine_tuning_epoch
 
         self.client_drop = []
-        self.client_not_selected = []
-        self.num_client_drop = math.ceil(self.num_clients * self.client_drop_rate)
-        self.num_clients += self.num_client_drop
-        
 
     def set_clients(self, clientObj):
         for i, train_slow, send_slow in zip(range(self.num_clients), self.train_slow_clients, self.send_slow_clients):
@@ -160,7 +156,6 @@ class Server(object):
         #     self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
 
         self.client_drop = [client for client in self.selected_clients if client not in active_clients]
-        self.client_not_selected = [client for client in self.clients if client not in self.selected_clients]
         
         print('=============')
         print(f'Clients: {len([client.id for client in self.clients])}')
