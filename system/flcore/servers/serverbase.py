@@ -138,10 +138,10 @@ class Server(object):
             substitute_client = min(self.new_clients, 
                                     key=lambda new_clients: \
                                         abs(new_clients.train_samples - client_drop.train_samples))
+            
             print(f'\t\tSai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
             substitutes_clients.append(substitute_client)
             self.new_clients.remove(substitute_client)
-            self.new_clients.append(client_drop)
         print('')
 
         return substitutes_clients
@@ -167,6 +167,7 @@ class Server(object):
         if len(self.client_drop) > 0:
             substitutes = self.replace_clients()
             active_clients.extend(substitutes)
+            self.new_clients.extend(self.client_drop)
 
         print('===========================================================================')
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
