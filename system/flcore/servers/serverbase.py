@@ -142,6 +142,8 @@ class Server(object):
                                         abs(new_clients.train_samples - client_drop.train_samples))
             
             print(f'\t\tSai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
+            self.new_clients.append(client_drop)
+            self.client_drop.remove(client_drop)
             substitutes_clients.append(substitute_client)
             self.new_clients.remove(substitute_client)
         print('')
