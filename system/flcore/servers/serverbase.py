@@ -170,6 +170,7 @@ class Server(object):
         if len(self.client_drop) > 0:
             substitutes = self.replace_clients()
             active_clients.append(client for client in substitutes)
+            print(f'================>>>>>>>>>>>{substitutes}')
 
         print(f'================>>>>>>>>>>>{active_clients}')
         sys.exit()
