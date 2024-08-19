@@ -136,6 +136,7 @@ class Server(object):
         # self.new_clients = [client for client in self.new_clients if client not in self.client_drop]
         
         print('')
+        print(len(self.client_drop))
         for client_drop in self.client_drop:
             substitute_client = min(self.new_clients, 
                                     key=lambda new_clients: \
