@@ -138,7 +138,7 @@ class Server(object):
                                     key=lambda new_clients: \
                                         abs(new_clients.train_samples - client_drop.train_samples))
             
-            print(f'Sai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
+            print(f'\t\tSai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
             substitutes_clients.append(substitute_client)
             self.new_clients.remove(substitute_client)
             self.new_clients.append(client_drop)
