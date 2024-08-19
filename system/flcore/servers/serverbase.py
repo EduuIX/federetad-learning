@@ -134,6 +134,20 @@ class Server(object):
             client.send_time_cost['total_cost'] += 2 * (time.time() - start_time)
 
 
+    def replace_clients(self):
+        substitutes_clients = []
+
+        for client_drop in self.client_drop:
+            substitute_client = min(self.client_not_selected, 
+                                    key=lambda client_not_selected: \
+                                        abs(client_not_selected.train_samples - client_drop.train_samples))
+            
+            substitutes_clients.append(substitute_client)
+            self.client_not_selected.remove(substitute_client) 
+
+        return substitutes_clients
+
+
     def receive_models(self):
         assert (len(self.selected_clients) > 0)
 
@@ -145,9 +159,17 @@ class Server(object):
 
         self.client_drop = [client for client in self.selected_clients if client not in active_clients]
         self.client_not_selected = [client for client in self.clients if client not in self.selected_clients]
+        
+        print('=============')
+        print(f'Clients: {[client.id for client in self.clients]}')
+        print(f'Selected_Clients: {[client.id for client in self.selected_clients]}')
+        print(f'Active_client: {[client.id for client in active_clients]}')
+        print(f'Client_drop: {[client.id for client in self.client_drop]}')
+        print(f'Client_not_selected: {[client.id for client in self.client_not_selected]}')
 
-        # if self.client_drop > 0:
-        #     self.similarity(client1, client2)
+        if len(self.client_drop) > 0:
+            substitutes = self.replace_clients(self.client_drop, self.client_not_selected)
+            active_clients.append(client for client in substitutes)
 
         print('=============')
         print(f'Clients: {[client.id for client in self.clients]}')
@@ -155,7 +177,6 @@ class Server(object):
         print(f'Active_client: {[client.id for client in active_clients]}')
         print(f'Client_drop: {[client.id for client in self.client_drop]}')
         print(f'Client_not_selected: {[client.id for client in self.client_not_selected]}')
-        # sys.exit()
 
 
         self.uploaded_ids = []
