@@ -137,8 +137,9 @@ class Server(object):
             substitute_client = min(self.new_clients, 
                                     key=lambda new_clients: \
                                         abs(new_clients.train_samples - client_drop.train_samples))
-            
+            print('')
             print(f'\t\tSai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
+            print('')
             substitutes_clients.append(substitute_client)
             self.new_clients.remove(substitute_client)
             self.new_clients.append(client_drop)
