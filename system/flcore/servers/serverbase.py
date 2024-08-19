@@ -144,7 +144,8 @@ class Server(object):
             
             print(f'Sai: {client_drop.id} =============> Entra: {substitute_client.id}')
             substitutes_clients.append(substitute_client)
-            self.new_clients.remove(substitute_client) 
+            self.new_clients.remove(substitute_client)
+            self.new_clients.append(client_drop)
 
         return substitutes_clients
 
