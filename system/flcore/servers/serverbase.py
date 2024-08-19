@@ -168,7 +168,7 @@ class Server(object):
         print(f'Client_not_selected: {[client.id for client in self.client_not_selected]}')
 
         if len(self.client_drop) > 0:
-            substitutes = self.replace_clients(self.client_drop, self.client_not_selected)
+            substitutes = self.replace_clients()
             active_clients.append(client for client in substitutes)
 
         print('=============')
