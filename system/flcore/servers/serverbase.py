@@ -163,8 +163,8 @@ class Server(object):
         print('===========================================================================')
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
         print(f'Active_clients: {len([client.id for client in active_clients])}')
-        print(f'Client_drop: {[client.id for client in self.client_drop]}')
-        print(f'Client_not_selected: {[client.id for client in self.new_clients]}')
+        print(f'Client_drop: {len([client.id for client in self.client_drop])}')
+        print(f'Client_not_selected: {len([client.id for client in self.new_clients])}')
 
         if len(self.client_drop) > 0:
             substitutes = self.replace_clients()
@@ -174,8 +174,8 @@ class Server(object):
         print('===========================================================================')
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
         print(f'Active_clients: {len([client.id for client in active_clients])}')
-        print(f'Client_drop: {[client.id for client in self.client_drop]}')
-        print(f'Client_not_selected: {[client.id for client in self.new_clients]}')
+        print(f'Client_drop: {len([client.id for client in self.client_drop])}')
+        print(f'Client_not_selected: {len([client.id for client in self.new_clients])}')
 
         self.uploaded_ids = []
         self.uploaded_weights = []
