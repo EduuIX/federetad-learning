@@ -167,7 +167,7 @@ class Server(object):
         if len(self.client_drop) > 0:
             substitutes = self.replace_clients()
             active_clients.extend(substitutes)
-            self.new_clients.extend(self.client_drop)
+            
 
         print('===========================================================================')
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')

@@ -145,7 +145,7 @@ class FedAvg(Server):
         # [t.join() for t in threads]
 
         self.receive_models()
-
+        self.new_clients.extend(self.client_drop)
         if self.dlg_eval and i%self.dlg_gap == 0:
             self.call_dlg(i)
         
