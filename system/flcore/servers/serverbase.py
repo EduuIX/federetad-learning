@@ -132,23 +132,37 @@ class Server(object):
 
     def replace_clients(self):
         substitutes_clients = []
+        removed_clients = set()  # Conjunto para armazenar IDs de clientes que já saíram
 
-        # self.new_clients = [client for client in self.new_clients if client not in self.client_drop]
-        
         print('')
+        print([client.id for client in self.client_drop])
+        print([client.id for client in self.new_clients])
+
         for client_drop in self.client_drop[:]:
-            substitute_client = min(self.new_clients, 
-                                    key=lambda new_clients: \
-                                        abs(new_clients.train_samples - client_drop.train_samples))
+            # Encontra um cliente substituto que ainda não foi removido
+            substitute_client = min(
+                [client for client in self.new_clients if client.id not in removed_clients],
+                key=lambda new_clients: abs(new_clients.train_samples - client_drop.train_samples)
+            )
             
             print(f'\t\tSai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
+            
+            # Marca o cliente como removido
+            removed_clients.add(substitute_client.id)
+            removed_clients.add(client_drop.id)
+
+            # Atualiza as listas
             self.new_clients.append(client_drop)
             self.client_drop.remove(client_drop)
             substitutes_clients.append(substitute_client)
             self.new_clients.remove(substitute_client)
+
+        print([client.id for client in self.client_drop])
+        print([client.id for client in self.new_clients])
         print('')
 
         return substitutes_clients
+
 
 
     def receive_models(self):
