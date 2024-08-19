@@ -1,3 +1,4 @@
+import math
 import torch
 import os
 import numpy as np
@@ -44,7 +45,6 @@ class Server(object):
         self.send_slow_clients = []
     #-----------------------------------------------------------------
         self.users = []
-                 
     #-----------------------------------------------------------------
         self.uploaded_weights = []
         self.uploaded_ids = []
@@ -69,6 +69,11 @@ class Server(object):
         self.eval_new_clients = False
         self.fine_tuning_epoch = args.fine_tuning_epoch
 
+        self.client_drop = []
+        self.client_not_selected = []
+        self.num_client_drop = math.ceil(self.num_clients * self.client_drop_rate)
+        self.num_clients += self.num_client_drop
+        
 
     def set_clients(self, clientObj):
         for i, train_slow, send_slow in zip(range(self.num_clients), self.train_slow_clients, self.send_slow_clients):
@@ -132,16 +137,32 @@ class Server(object):
     def receive_models(self):
         assert (len(self.selected_clients) > 0)
 
-        # print(len(self.selected_clients))
-        # print(int((1-self.client_drop_rate) * self.current_num_join_clients))
+        # active_clients = random.sample(
+        #     self.selected_clients, int((1-self.client_drop_rate) * len(self.selected_clients)))
 
         active_clients = random.sample(
-            self.selected_clients, int((1-self.client_drop_rate) * len(self.selected_clients)))
+            self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
+
+        self.client_drop = [client for client in self.selected_clients if client not in active_clients]
+        self.client_not_selected = [client for client in self.clients if client not in self.selected_clients]
+
+        # if self.client_drop > 0:
+        #     self.similarity(client1, client2)
+
+        print('=============')
+        print(f'Clients: {[client.id for client in self.clients]}')
+        print(f'Selected_Clients: {[client.id for client in self.selected_clients]}')
+        print(f'Active_client: {[client.id for client in active_clients]}')
+        print(f'Client_drop: {[client.id for client in self.client_drop]}')
+        print(f'Client_not_selected: {[client.id for client in self.client_not_selected]}')
+        # sys.exit()
+
 
         self.uploaded_ids = []
         self.uploaded_weights = []
         self.uploaded_models = []
         tot_samples = 0
+
         for client in active_clients:
             try:
                 client_time_cost = client.train_time_cost['total_cost'] / client.train_time_cost['num_rounds'] + \
