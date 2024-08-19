@@ -142,6 +142,7 @@ class Server(object):
                                     key=lambda client_not_selected: \
                                         abs(client_not_selected.train_samples - client_drop.train_samples))
             
+            print(f'Sai: {client_drop.id} =============> Entra: {substitute_client.id}')
             substitutes_clients.append(substitute_client)
             self.client_not_selected.remove(substitute_client) 
 
@@ -161,23 +162,22 @@ class Server(object):
         self.client_not_selected = [client for client in self.clients if client not in self.selected_clients]
         
         print('=============')
-        print(f'Clients: {[client.id for client in self.clients]}')
-        print(f'Selected_Clients: {[client.id for client in self.selected_clients]}')
-        print(f'Active_clients: {[client.id for client in active_clients]}')
-        print(f'Client_drop: {[client.id for client in self.client_drop]}')
-        print(f'Client_not_selected: {[client.id for client in self.client_not_selected]}')
+        print(f'Clients: {len([client.id for client in self.clients])}')
+        print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
+        print(f'Active_clients: {len([client.id for client in active_clients])}')
+        print(f'Client_drop: {len([client.id for client in self.client_drop])}')
+        print(f'Client_not_selected: {len([client.id for client in self.client_not_selected])}')
 
         if len(self.client_drop) > 0:
             substitutes = self.replace_clients()
             active_clients.extend(substitutes)
-            
-        print('=============')
-        print(f'Clients: {[client.id for client in self.clients]}')
-        print(f'Selected_Clients: {[client.id for client in self.selected_clients]}')
-        print(f'Active_clients: {[client.id for client in active_clients]}')
-        print(f'Client_drop: {[client.id for client in self.client_drop]}')
-        print(f'Client_not_selected: {[client.id for client in self.client_not_selected]}')
 
+        print('=============')
+        print(f'Clients: {len([client.id for client in self.clients])}')
+        print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
+        print(f'Active_clients: {len([client.id for client in active_clients])}')
+        print(f'Client_drop: {len([client.id for client in self.client_drop])}')
+        print(f'Client_not_selected: {len([client.id for client in self.client_not_selected])}')
 
         self.uploaded_ids = []
         self.uploaded_weights = []
