@@ -70,6 +70,8 @@ class Server(object):
         self.fine_tuning_epoch = args.fine_tuning_epoch
 
         self.client_drop = []
+        self.client_not_selected = []
+
 
     def set_clients(self, clientObj):
         for i, train_slow, send_slow in zip(range(self.num_clients), self.train_slow_clients, self.send_slow_clients):
@@ -132,20 +134,51 @@ class Server(object):
 
     def replace_clients(self):
         substitutes_clients = []
+        dropped_clients_temp = set()
+        entered_clients_temp = set()
 
-        # self.new_clients = [client for client in self.new_clients if client not in self.client_drop]
-        
         print('')
         for client_drop in self.client_drop[:]:
-            substitute_client = min(self.new_clients, 
-                                    key=lambda new_clients: \
-                                        abs(new_clients.train_samples - client_drop.train_samples))
-            
-            print(f'\t\tSai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
-            self.new_clients.append(client_drop)
-            self.client_drop.remove(client_drop)
-            substitutes_clients.append(substitute_client)
-            self.new_clients.remove(substitute_client)
+            # Filtrar para evitar substitutos que acabaram de entrar ou que já saíram na mesma rodada
+            available_clients = [
+                c for c in self.new_clients
+                if c not in entered_clients_temp and c != client_drop and c not in dropped_clients_temp
+            ]
+
+            # Verificar se há clientes disponíveis para substituição
+            if available_clients:
+                substitute_client = min(
+                    available_clients,
+                    key=lambda new_client: abs(new_client.train_samples - client_drop.train_samples)
+                )
+
+                print(f'\t\tSai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
+
+                # Adicionar o cliente que saiu e o que entrou às listas temporárias
+                dropped_clients_temp.add(client_drop)
+                entered_clients_temp.add(substitute_client)
+
+                # Atualizar as listas de clientes
+                substitutes_clients.append(substitute_client)
+                self.client_drop.remove(client_drop)
+                self.new_clients.remove(substitute_client)
+                self.new_clients.append(client_drop)
+
+            else:
+                print(f'\t\tCliente {client_drop.id} não pode ser substituído nesta rodada.')
+
+        # Recolocar todos os clientes que saíram de volta em new_clients, apenas se ainda não estiverem na lista
+        self.new_clients.extend([client for client in dropped_clients_temp if client not in self.new_clients])
+
+        # Atualizar client_drop com os clientes que saíram nesta rodada
+        self.client_drop = list(dropped_clients_temp)
+
+        # Atualizar client_not_selected removendo clientes que foram selecionados para entrar
+        self.client_not_selected = [c for c in self.client_not_selected if c not in entered_clients_temp]
+
+        # Adicionar os clientes que saíram à lista de não selecionados
+        self.client_not_selected.extend([client for client in dropped_clients_temp if client not in self.client_not_selected])
+
         print('')
 
         return substitutes_clients
@@ -166,7 +199,7 @@ class Server(object):
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
         print(f'Active_clients: {len([client.id for client in active_clients])}')
         print(f'Client_drop: {len([client.id for client in self.client_drop])}')
-        print(f'Client_not_selected: {len([client.id for client in self.new_clients])}')
+        print(f'Client_not_selected: {sorted([client.id for client in self.client_not_selected])}<=>{len(self.client_not_selected)}')
 
         if len(self.client_drop) > 0:
             substitutes = self.replace_clients()
@@ -177,7 +210,7 @@ class Server(object):
         print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
         print(f'Active_clients: {len([client.id for client in active_clients])}')
         print(f'Client_drop: {len([client.id for client in self.client_drop])}')
-        print(f'Client_not_selected: {len([client.id for client in self.new_clients])}')
+        print(f'Client_not_selected: {sorted([client.id for client in self.client_not_selected])}<=>{len(self.client_not_selected)}')
 
         self.uploaded_ids = []
         self.uploaded_weights = []
@@ -237,8 +270,6 @@ class Server(object):
 
 
     #-------------------------------- My functions---------------------------------------#
-    
-
     def valueOfList(self, value):
         """
     Retorna uma lista que contém todos os valores inteiros e flutuantes contidos em uma estrutura de dados aninhada.
@@ -286,8 +317,6 @@ class Server(object):
                     valueList.append(value[i])
 
             return valueList
-    
-    
     #-------------------------------- My functions---------------------------------------#
 
     
