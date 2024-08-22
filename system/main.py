@@ -453,6 +453,8 @@ if __name__ == "__main__":
     parser.add_argument('-lamr', "--lamda_reg", type=float, default=0.0)
     parser.add_argument('-mv', "--malicious_value", type=int, default=0)
     parser.add_argument('-mal', "--client_malicious", type=bool, default=False)
+    
+    parser.add_argument('-rc', "--replace_client", type=int, default=0)
 
 
     args = parser.parse_args()

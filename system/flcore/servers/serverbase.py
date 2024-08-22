@@ -11,6 +11,8 @@ import sys
 from utils.data_utils import read_client_data
 from utils.dlg import DLG
 
+from scipy.spatial.distance import directed_hausdorff
+
 
 class Server(object):
 
@@ -38,6 +40,8 @@ class Server(object):
         self.save_folder_name = args.save_folder_name
         self.top_cnt = 100
         self.auto_break = args.auto_break
+        
+        self.replace_client = args.replace_client
 
         self.clients = []
         self.selected_clients = []
@@ -147,10 +151,16 @@ class Server(object):
 
             # Verificar se há clientes disponíveis para substituição
             if available_clients:
-                substitute_client = min(
-                    available_clients,
-                    key=lambda new_client: abs(new_client.train_samples - client_drop.train_samples)
-                )
+                
+                if self.replace_client == 1:
+                    substitute_client = \
+                        min(
+                        available_clients,
+                        key=lambda new_client: \
+                            abs(new_client.train_samples - client_drop.train_samples)
+                    )
+                
+                
 
                 print(f'\t\tSai: {client_drop.id}\t\t =============> \tEntra: {substitute_client.id}')
 
@@ -195,22 +205,24 @@ class Server(object):
 
         self.client_drop = [client for client in self.selected_clients if client not in active_clients]
         
-        print('===========================================================================')
-        print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
-        print(f'Active_clients: {len([client.id for client in active_clients])}')
-        print(f'Client_drop: {len([client.id for client in self.client_drop])}')
-        print(f'Client_not_selected: {sorted([client.id for client in self.client_not_selected])}<=>{len(self.client_not_selected)}')
 
-        if len(self.client_drop) > 0:
+        if len(self.client_drop) > 0 and self.replace_client != 0:
+            print('===========================================================================')
+            print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
+            print(f'Active_clients: {len([client.id for client in active_clients])}')
+            print(f'Client_drop: {len([client.id for client in self.client_drop])}')
+            print(f'Client_not_selected: {sorted([client.id for client in self.client_not_selected])}<=>{len(self.client_not_selected)}')
+            
             substitutes = self.replace_clients()
             active_clients.extend(substitutes)
+
+            print('===========================================================================')
+            print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
+            print(f'Active_clients: {len([client.id for client in active_clients])}')
+            print(f'Client_drop: {len([client.id for client in self.client_drop])}')
+            print(f'Client_not_selected: {sorted([client.id for client in self.client_not_selected])}<=>{len(self.client_not_selected)}')
             
 
-        print('===========================================================================')
-        print(f'Selected_Clients: {len([client.id for client in self.selected_clients])}')
-        print(f'Active_clients: {len([client.id for client in active_clients])}')
-        print(f'Client_drop: {len([client.id for client in self.client_drop])}')
-        print(f'Client_not_selected: {sorted([client.id for client in self.client_not_selected])}<=>{len(self.client_not_selected)}')
 
         self.uploaded_ids = []
         self.uploaded_weights = []

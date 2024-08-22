@@ -10,6 +10,7 @@ from sklearn import metrics
 from utils.data_utils import read_client_data, read_data
 from scipy.stats import entropy
 
+from collections import Counter
 
 class Client(object):
     """
@@ -101,12 +102,24 @@ class Client(object):
             param.data = new_param.data.clone()
 
 
+    def send_distribution_labels(self):
+        train_data = read_client_data(self.dataset, self.id, is_train=True)
+        labels = [y.item() for _, y in train_data]
+        distribution = Counter(labels)
+        
+        # Garante que todas as chaves de 0 a 9 estejam presentes no dicionário
+        full_distribution = {i: distribution.get(i, 0) for i in range(10)}
+        full_distribution = list(full_distribution.values())
+        return np.array(full_distribution).reshape(1, -1)
+
+
     def test_metrics(self):
+        self.send_distribution_labels()
         testloaderfull = self.load_test_data()
         # self.model = self.load_model('model')
         # self.model.to(self.device)
         self.model.eval()
-
+        
         test_acc = 0
         test_num = 0
         y_prob = []
