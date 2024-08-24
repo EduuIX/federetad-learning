@@ -149,9 +149,9 @@ class Server(object):
                 if c not in entered_clients_temp and c != client_drop and c not in dropped_clients_temp
             ]
 
-            substitute_client = None
             
             if available_clients:
+                substitute_client = None
                 if self.replace_client == 1:
                     substitute_client = random.choice(available_clients)
                 
