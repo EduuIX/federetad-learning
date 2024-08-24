@@ -239,6 +239,7 @@ class Server(object):
             # print(f'Client_drop: {sorted([client.id for client in self.client_drop])}<=>{len(self.client_drop)}')
             # print(f'New_Client: {sorted([client.id for client in self.new_clients])}<=>{len(self.new_clients)}')
             
+            
             substitutes = self.replace_clients()
             substitutes = [x for x in substitutes if x not in active_clients]
             active_clients.extend(substitutes)
