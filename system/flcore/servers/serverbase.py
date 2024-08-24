@@ -150,7 +150,7 @@ class Server(object):
             ]
 
             substitute_client = None
-ddd
+            
             if available_clients:
                 if self.replace_client == 1:
                     substitute_client = random.choice(available_clients)
