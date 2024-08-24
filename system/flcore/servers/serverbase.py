@@ -222,7 +222,7 @@ class Server(object):
             self.client_drop = [client for client in self.selected_clients2 if client not in active_clients]
 
         if len(self.client_drop) > 0 and self.replace_client != 0:
-            metodo = 'Nenhum'
+            metodo = 'Sem substituição'
             if self.replace_client == 1:
                 metodo = 'Aleatório'
             elif self.replace_client == 2:
