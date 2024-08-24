@@ -166,7 +166,8 @@ class Server(object):
                         labels_new = new_client.send_distribution_labels()
                         dist1 = directed_hausdorff(labels_dropped, labels_new)[0]
                         dist2 = directed_hausdorff(labels_new, labels_dropped)[0]
-                        metric = -max(dist1, dist2)
+                        # metric = -max(dist1, dist2)
+                        metric = (dist1 + dist2) / 2 
 
                         if metric < min_metric:
                             min_metric = metric
