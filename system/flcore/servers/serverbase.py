@@ -593,4 +593,3 @@ class Server(object):
         ids = [c.id for c in self.new_clients]
 
         return ids, num_samples, tot_correct, tot_auc
-
