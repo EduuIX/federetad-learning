@@ -151,12 +151,15 @@ class Server(object):
 
             if available_clients:
                 if self.replace_client == 1:
+                    substitute_client = random.choice(available_clients)
+                
+                elif self.replace_client == 2:
                     substitute_client = min(
                         available_clients,
                         key=lambda new_client: abs(new_client.train_samples - client_drop.train_samples)
                     )
 
-                elif self.replace_client == 2:
+                elif self.replace_client == 3:
                     substitute_client = None
                     min_metric = float('inf')
 
@@ -219,9 +222,12 @@ class Server(object):
         if len(self.client_drop) > 0 and self.replace_client != 0:
             metodo = 'Nenhum'
             if self.replace_client == 1:
-                metodo = 'Similaridade de Dados'
+                metodo = 'Aleatório'
             elif self.replace_client == 2:
+                metodo = 'Similaridade de Clients'
+            elif self.replace_client == 3:
                 metodo = 'Hausdorff'
+            
             print(f'\nMétodo de Substituição para Falha de Clientes: {metodo}\n')
             print('===========================================================================')
             # if i == 0:
