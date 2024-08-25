@@ -10,7 +10,7 @@ from utils.dataset_utils import check, separate_data, split_data, save_file
 
 random.seed(1)
 np.random.seed(1)
-num_clients = 60
+num_clients = 100
 num_classes = 10
 dir_path = "fmnist/"
 
@@ -73,8 +73,8 @@ def generate_fmnist(dir_path, num_clients, num_classes, niid, balance, partition
 
 
 if __name__ == "__main__":
-    niid = False
-    balance = True
-    partition = None
+    niid = True if sys.argv[1] == "noniid" else False
+    balance = True if sys.argv[2] == "balance" else False
+    partition = sys.argv[3] if sys.argv[3] != "-" else None
 
     generate_fmnist(dir_path, num_clients, num_classes, niid, balance, partition)
