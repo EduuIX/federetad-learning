@@ -136,7 +136,7 @@ class Server(object):
             client.send_time_cost['num_rounds'] += 1
             client.send_time_cost['total_cost'] += 2 * (time.time() - start_time)
         
-        
+
         for client in self.new_clients:
             start_time = time.time()
             
@@ -159,7 +159,7 @@ class Server(object):
             ]
 
             
-            if available_clients:self.new_clients
+            if available_clients:
                 substitute_client = None
                 if self.replace_client == 1:
                     substitute_client = random.choice(available_clients)
