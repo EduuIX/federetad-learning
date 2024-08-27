@@ -88,7 +88,11 @@ class Server(object):
                             test_samples=len(test_data), 
                             train_slow=train_slow, 
                             send_slow=send_slow)
-            self.clients.append(client)
+            if client.id < 40:
+                self.clients.append(client)
+            else:
+                self.new_clients.append(client)
+
 
     # random select slow clients
     def select_slow_clients(self, slow_rate):
