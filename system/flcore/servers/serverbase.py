@@ -473,7 +473,7 @@ class Server(object):
         
         # Escrever o valor da variável no arquivo
         with open("saida.txt", "a") as arquivo:
-            arquivo.write(str(test_acc) + "," + str(train_loss)+ "," + str(test_auc)+ "," + str(self.selected_clients)+ "\n")
+            arquivo.write(str(test_acc) + "," + str(train_loss)+ "," + str(test_auc)+ "," + str(len(self.selected_clients))+ "\n")
 
 
         if acc == None:
