@@ -88,11 +88,8 @@ class Server(object):
                             test_samples=len(test_data), 
                             train_slow=train_slow, 
                             send_slow=send_slow)
-            if client.id < 40:
-                self.clients.append(client)
-            else:
-                self.new_clients.append(client)
-
+            self.clients.append(client)
+        
 
     # random select slow clients
     def select_slow_clients(self, slow_rate):
@@ -122,10 +119,18 @@ class Server(object):
             print(self.current_num_join_clients)
         else:
             self.current_num_join_clients = self.num_join_clients
-        selected_clients = list(np.random.choice(self.clients, self.current_num_join_clients, replace=False))
-
-        print(f'Selected Clients: {len(selected_clients)} clients')
         
+        selected_clients = list(np.random.choice(self.clients, self.current_num_join_clients, replace=False))
+        
+        espera = list(np.random.choice(self.clients, int(self.current_num_join_clients + (self.current_num_join_clients * 0.5)), replace=False))
+        
+        self.new_clients = [x for x in espera if x not in selected_clients]
+        self.new_clients = random.sample(self.new_clients, 6)
+
+        # print(f'Selected Clients: {len(selected_clients)} clients <=> {[x.id for x in selected_clients]}')
+        # print(f'Espera Clients: {len(espera)} clients <=> {[x.id for x in espera]}')
+        # print(f'New Clients: {len(self.new_clients)} clients <=> {[x.id for x in self.new_clients]}')
+        # exit()
         return selected_clients
 
 
@@ -140,7 +145,6 @@ class Server(object):
             client.send_time_cost['num_rounds'] += 1
             client.send_time_cost['total_cost'] += 2 * (time.time() - start_time)
         
-
         for client in self.new_clients:
             start_time = time.time()
             
@@ -161,7 +165,6 @@ class Server(object):
                 c for c in self.new_clients
                 if c not in entered_clients_temp and c != client_drop and c not in dropped_clients_temp
             ]
-
             
             if available_clients:
                 substitute_client = None
@@ -216,23 +219,28 @@ class Server(object):
         self.new_clients = list(set(self.new_clients))
 
         print('')
+
         return substitutes_clients
 
 
-    def receive_models(self, i):
+    def receive_models(self, i, args):
         assert (len(self.selected_clients) > 0)
+        
         active_clients = \
             random.sample(self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
-    
-        if i == 0 and self.replace_client > 0:
-            active_clients = \
-                random.sample(self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
-            self.client_drop = [client for client in self.selected_clients if client not in active_clients]
         
-        elif i != 0 and self.replace_client > 0:
-            active_clients = \
-                random.sample(self.selected_clients2, int((1-self.client_drop_rate) * self.current_num_join_clients))
-            self.client_drop = [client for client in self.selected_clients2 if client not in active_clients]
+        self.client_drop = [client for client in self.selected_clients if client not in active_clients]
+        # if args.bellow_average:
+        #     self.new_clients = [x for x in self.selected_clients if x not in active_clients]
+
+        # if i == 0 and self.replace_client > 0:
+        #     active_clients = \
+        #         random.sample(self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
+        
+        # elif i != 0 and self.replace_client > 0:
+        #     active_clients = \
+        #         random.sample(self.selected_clients2, int((1-self.client_drop_rate) * self.current_num_join_clients))
+        #     self.client_drop = [client for client in self.selected_clients2 if client not in active_clients]
 
         if len(self.client_drop) > 0 and self.replace_client != 0:
             metodo = 'Nenhum'
@@ -245,29 +253,21 @@ class Server(object):
             
             print(f'\nMétodo de Substituição para Falha de Clientes: {metodo}\n')
             print('===========================================================================')
-            # if i == 0:
-            #     print(f'Selected_Clients: {sorted([client.id for client in self.selected_clients])}<=>{len(self.selected_clients)}')
-            # else:
-            #     print(f'Selected_Clients: {sorted([client.id for client in self.selected_clients2])}<=>{len(self.selected_clients)}')
-
-            # print(f'Active_clients: {sorted([client.id for client in active_clients])}<=>{len(active_clients)}')
-            # print(f'Client_drop: {sorted([client.id for client in self.client_drop])}<=>{len(self.client_drop)}')
-            # print(f'New_Client: {sorted([client.id for client in self.new_clients])}<=>{len(self.new_clients)}')
+            print(f'Selected_Clients: {sorted([client.id for client in self.selected_clients])}<=>{len(self.selected_clients)}')
+            print(f'Active_clients: {sorted([client.id for client in active_clients])}<=>{len(active_clients)}')
+            print(f'Client_drop: {sorted([client.id for client in self.client_drop])}<=>{len(self.client_drop)}')
+            print(f'New_Client: {sorted([client.id for client in self.new_clients])}<=>{len(self.new_clients)}')
             
             
             substitutes = self.replace_clients()
             substitutes = [x for x in substitutes if x not in active_clients]
             active_clients.extend(substitutes)
-            self.selected_clients2 = active_clients
+            # self.selected_clients2 = active_clients
             
-            # if i == 0:
-            #     print(f'Selected_Clients: {sorted([client.id for client in self.selected_clients])}<=>{len(self.selected_clients)}')
-            # else:
-            #     print(f'Selected_Clients: {sorted([client.id for client in self.selected_clients2])}<=>{len(self.selected_clients)}')
-
-            # print(f'Active_clients: {sorted([client.id for client in active_clients])}<=>{len(active_clients)}')
-            # print(f'Client_drop: {sorted([client.id for client in self.client_drop])}<=>{len(self.client_drop)}')
-            # print(f'New_Client: {sorted([client.id for client in self.new_clients])}<=>{len(self.new_clients)}')
+            print(f'Selected_Clients: {sorted([client.id for client in self.selected_clients])}<=>{len(self.selected_clients)}')
+            print(f'Active_clients: {sorted([client.id for client in active_clients])}<=>{len(active_clients)}')
+            print(f'Client_drop: {sorted([client.id for client in self.client_drop])}<=>{len(self.client_drop)}')
+            print(f'New_Client: {sorted([client.id for client in self.new_clients])}<=>{len(self.new_clients)}')
             print('===========================================================================')
         # print(len(active_clients))
         self.uploaded_ids = []
@@ -278,7 +278,7 @@ class Server(object):
         for client in active_clients:
             try:
                 client_time_cost = client.train_time_cost['total_cost'] / client.train_time_cost['num_rounds'] + \
-                        client.send_time_cost['total_cost'] / client.send_time_cost['num_rounds']
+                    client.send_time_cost['total_cost'] / client.send_time_cost['num_rounds']
             except ZeroDivisionError:
                 client_time_cost = 0
             if client_time_cost <= self.time_threthold:

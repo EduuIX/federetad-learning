@@ -41,10 +41,16 @@ class FedAvg(Server):
     
         # Select the top percentage of the clients with the highest entropies
         num_clients = len(sorted_clients)
-        selected_clients = [client for client, entropy in sorted_clients[:int(num_clients * self.join_ratio)]]
-
         
-        print(f'Selected Clients: {len(selected_clients)} clients')
+        selected_clients = [client for client, entropy in sorted_clients[:int(num_clients * self.join_ratio)]]
+        espera = [client for client, entropy in sorted_clients[:int(num_clients * self.join_ratio + (num_clients * self.join_ratio * 0.5))]]
+
+        self.new_clients = [client for client in espera if client not in selected_clients]
+
+        # print(f'Selected Clients: {[x.id for x in selected_clients]} clients')
+        # print(f'Espera: {[x.id for x in espera]} clients')
+        # exit()
+        
         return selected_clients
     
 
@@ -65,6 +71,7 @@ class FedAvg(Server):
             if list_of_accuracies[idx_accuracy] < average_accuracy:
                 selected_clients.append(self.clients[idx_accuracy])
         print(f'Selected Clients: {len(selected_clients)} clients')
+
         return selected_clients
 
 
@@ -144,7 +151,7 @@ class FedAvg(Server):
         # [t.start() for t in threads]
         # [t.join() for t in threads]
 
-        self.receive_models(i)
+        self.receive_models(i, args)
         # self.new_clients.extend(self.client_drop)
         if self.dlg_eval and i%self.dlg_gap == 0:
             self.call_dlg(i)
