@@ -154,6 +154,8 @@ class FedAvg(Server):
         self.Budget.append(time.time() - s_t)
         
         print('-'*25, 'time cost', '-'*25, self.Budget[-1])
+        with open("tempo.txt", "a") as arquivo:
+            arquivo.write(str(self.Budget[-1]) + "\n")
 
 
     def train(self, args):
