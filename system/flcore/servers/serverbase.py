@@ -226,12 +226,16 @@ class Server(object):
     def receive_models(self, i, args):
         assert (len(self.selected_clients) > 0)
         
-        active_clients = \
-            random.sample(self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
+        if args.bellow_average or args.power_of_choice:
+            active_clients = \
+                random.sample(self.selected_clients, int((1-self.client_drop_rate) * len(self.selected_clients)))
+            self.new_clients = [x for x in self.selected_clients if x not in active_clients]
+        else:
+            active_clients = \
+                random.sample(self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
         
         self.client_drop = [client for client in self.selected_clients if client not in active_clients]
         # if args.bellow_average:
-        #     self.new_clients = [x for x in self.selected_clients if x not in active_clients]
 
         # if i == 0 and self.replace_client > 0:
         #     active_clients = \
