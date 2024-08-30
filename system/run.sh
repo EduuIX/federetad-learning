@@ -1,5 +1,5 @@
 
-# python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 30 -did 0 2>&1 | tee "command1.log"
+# python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 60 -did 0 2>&1 | tee "command1.log"
 
 # cat "command1.log" > "log_NormalSelection.txt"
 
@@ -8,7 +8,7 @@
 
 
 
-# python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 30 -did 0 -ent True 2>&1 | tee "command2.log"
+# python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 60 -did 0 -ent True 2>&1 | tee "command2.log"
 
 # cat "command2.log" > "log_BestEntropy.txt"
 
@@ -17,7 +17,7 @@
 
 
 
-# python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 30 -did 0 -ba True 2>&1 | tee "command3.log"
+# python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 60 -did 0 -ba True 2>&1 | tee "command3.log"
 
 # cat "command3.log" > "log_BellowAverage.txt"
 
@@ -35,7 +35,7 @@ for cdr_value in "${cdr_values[@]}"; do
     for jr_value in "${jr_values[@]}"; do
         for rc_value in "${rc_values[@]}"; do
         
-            python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 30 -jr "$jr_value" -cdr "$cdr_value" -rc "$rc_value" -did 0 2>&1 | tee "command1_$cdr_value+_$jr_value+_$rc_value.log"
+            python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 60 -jr "$jr_value" -cdr "$cdr_value" -rc "$rc_value" -did 0 2>&1 | tee "command1_$cdr_value+_$jr_value+_$rc_value.log"
             
             cat "command1_$cdr_value+_$jr_value+_$rc_value.log" > "log_NormalSelection$cdr_value+_$jr_value+_$rc_value.txt"
 
@@ -44,7 +44,7 @@ for cdr_value in "${cdr_values[@]}"; do
 
 
 
-            python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 30 -jr "$jr_value" -cdr "$cdr_value" -rc "$rc_value" -did 0 -ent True 2>&1 | tee "command2_$cdr_value+_$jr_value+_$rc_value.log"
+            python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 60 -jr "$jr_value" -cdr "$cdr_value" -rc "$rc_value" -did 0 -ent True 2>&1 | tee "command2_$cdr_value+_$jr_value+_$rc_value.log"
 
             cat "command2_$cdr_value+_$jr_value+_$rc_value.log" > "log_BestEntropy$cdr_value+_$jr_value+_$rc_value.txt"
 
@@ -53,7 +53,7 @@ for cdr_value in "${cdr_values[@]}"; do
 
 
 
-            python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 30 -jr "$jr_value" -cdr "$cdr_value" -rc "$rc_value" -did 0 -ba True 2>&1 | tee "command3_$cdr_value+_$jr_value+_$rc_value.log"
+            python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 60 -jr "$jr_value" -cdr "$cdr_value" -rc "$rc_value" -did 0 -ba True 2>&1 | tee "command3_$cdr_value+_$jr_value+_$rc_value.log"
             
             cat "command3_$cdr_value+_$jr_value+_$rc_value.log" > "log_BellowAverage_$cdr_value+_$jr_value+_$rc_value.txt"
 
@@ -62,7 +62,7 @@ for cdr_value in "${cdr_values[@]}"; do
 
 
 
-            python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 30 -jr "$jr_value" -cdr "$cdr_value" -rc "$rc_value" -did 0 -pow True 2>&1 | tee "command3_$cdr_value+_$jr_value+_$rc_value.log"
+            python main.py -data fmnist -m cnn -algo FedAvg -gr 100 -nc 60 -jr "$jr_value" -cdr "$cdr_value" -rc "$rc_value" -did 0 -pow True 2>&1 | tee "command3_$cdr_value+_$jr_value+_$rc_value.log"
             
             cat "command4_$cdr_value+_$jr_value+_$rc_value.log" > "log_PowerOfChoice_$cdr_value+_$jr_value+_$rc_value.txt"
 
