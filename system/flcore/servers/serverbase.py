@@ -88,10 +88,8 @@ class Server(object):
                             test_samples=len(test_data), 
                             train_slow=train_slow, 
                             send_slow=send_slow)
-            if client.id < 40:
-                self.clients.append(client)
-            else:
-                self.new_clients.append(client)
+            
+            self.clients.append(client)
 
 
     # random select slow clients
@@ -119,7 +117,6 @@ class Server(object):
     def select_clients(self):
         if self.random_join_ratio:
             self.current_num_join_clients = np.random.choice(range(self.num_join_clients, self.num_clients+1), 1, replace=False)[0]
-            print(self.current_num_join_clients)
         else:
             self.current_num_join_clients = self.num_join_clients
         selected_clients = list(np.random.choice(self.clients, self.current_num_join_clients, replace=False))
@@ -222,8 +219,7 @@ class Server(object):
     def receive_models(self, i):
         assert (len(self.selected_clients) > 0)
         active_clients = \
-            random.sample(self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
-    
+            random.sample(self.selected_clients, int((1-self.client_drop_rate) * len(self.selected_clients)))
         if i == 0 and self.replace_client > 0:
             active_clients = \
                 random.sample(self.selected_clients, int((1-self.client_drop_rate) * self.current_num_join_clients))
