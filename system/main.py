@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 import copy
-import torch
+import torch # type: ignore
 import argparse
 import os
 import time
 import warnings
 import numpy as np
-import torchvision
+import torchvision # type: ignore
 import logging
 
 from flcore.servers.serveravg import FedAvg
+from flcore.servers.serverAlert import FedAlert
 from flcore.servers.serverpFedMe import pFedMe
 from flcore.servers.serverperavg import PerAvg
 from flcore.servers.serverprox import FedProx
@@ -184,6 +185,12 @@ def run(args):
 
         # select algorithm
         if args.algorithm == "FedAvg":
+            args.head = copy.deepcopy(args.model.fc)
+            args.model.fc = nn.Identity()
+            args.model = BaseHeadSplit(args.model, args.head)
+            server = FedAvg(args, i)
+
+        elif args.algorithm == "FedAlert":
             args.head = copy.deepcopy(args.model.fc)
             args.model.fc = nn.Identity()
             args.model = BaseHeadSplit(args.model, args.head)
