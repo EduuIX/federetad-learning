@@ -1,8 +1,8 @@
 import argparse, yaml, numpy as np
 from typing import Dict, Any
-from fedalert.datasets import make_synthetic_partitions, apply_cohort_drift
-from fedalert.client import FedAlertClient
-from fedalert.strategy import FedAlertStrategy
+from fedalert.datasets import make_synthetic_partitions, apply_cohort_drift # type: ignore
+from fedalert.client import FedAlertClient # type: ignore
+from fedalert.strategy import FedAlertStrategy # type: ignore
 
 def main():
     """

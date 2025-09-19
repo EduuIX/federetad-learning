@@ -267,6 +267,17 @@ class FedAlertClient:
         acumuladas durante as rodadas anteriores de treinamento. Além disso, uma resposta aleatória pode ser 
         aplicada para garantir privacidade diferencial local (LDP).
 
+        Fluxo de Execução:
+        ------------------
+        1. O método recebe os pesos globais atuais (global_weights) e os aplica ao modelo local.
+        2. Inicia o treinamento local por uma única rodada, com base nos pesos globais.
+        3. Após o treinamento, calcula a perda antes (`L_before`) e após (`L_after`) o treinamento.
+        4. Calcula a variação da perda (`A_k`) como a diferença entre `L_before` e `L_after`.
+        5. Compara a variação da perda (`A_k`) com um limiar calculado localmente, usando a média (`mu`) 
+        e o desvio padrão (`sigma`) das variações de perda anteriores.
+        6. Emite um alerta se a variação exceder o limiar, e pode aplicar uma resposta aleatória para garantir LDP.
+        7. Retorna os pesos atualizados do modelo local juntamente com as métricas calculadas para a rodada.
+
         Parâmetros:
         -----------
         global_weights : Dict[str, np.ndarray]
